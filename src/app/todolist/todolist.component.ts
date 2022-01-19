@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ToDo } from './ToDo';
 import {UsersService} from '../users.service'
 import { Router } from '@angular/router';
+import {LocationStrategy} from'@angular/common';
+
+
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
@@ -22,7 +25,12 @@ export class TodolistComponent implements OnInit {
   Household!:boolean;
   Etcetra!:boolean;
 
-  constructor(private userservice:UsersService,private router:Router) { }
+  constructor(private userservice:UsersService,private router:Router,private Location: LocationStrategy) {
+    history.pushState(null, '', window.location.href);
+    this.Location.onPopState(() => {
+      history.pushState(null, '', window.location.href);
+    });
+   }
 
   ngOnInit(): void {
     this.todos=this.userservice.getActiveUser().todoTasks;
