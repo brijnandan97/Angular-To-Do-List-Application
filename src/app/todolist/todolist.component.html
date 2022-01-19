@@ -1,0 +1,79 @@
+<header class="bg-dark mb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <nav class="navbar justify-content-between">
+            <a class="navbar-brand">Todo List</a> 
+              <div class="d-grid gap-2 d-md-flex justify-content-end">
+                <input type="button" id="EditProfile" value="Profile" class="btn btn-primary"  (click)="ViewProfile()"> 
+                <input type="button" id="logout"      value="Logout"  class="btn btn-primary " (click)="Logout()"> 
+              </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+</header>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-12 col-md-8">
+      <h1>Welcome in Todo List Application</h1>
+        <div class="todo-inner">
+          <div class="form-row">
+            <div class="col-12 mr-sm-1 my-lg-2">
+              <input type="text" style="margin-right: 10px"  placeholder="Enter your task"  [(ngModel)]="newTodo"/>
+              <input type="text" style="margin-right: 10px"  placeholder="Due Date"        id="datetaskinput"     onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="Duedate" />
+              <input type="text" style="margin-right: 10px"  placeholder="Reminder Date"   id="remindertaskinput" onfocus="(this.type='date')" onblur="(this.type='text')" [(ngModel)]="Reminderdate"/>
+              
+
+              <h3> Select Category:</h3>
+              <input type="checkbox" id="Office"     name="Office"     value="Office"         [(ngModel)]="Office" >Office<br>      
+              <input type="checkbox" id="Assignment" name="Assignment" value="Assignment"     [(ngModel)]="Assignment" >Assignment<br>      
+              <input type="checkbox" id="Household"  name="Household"  value="Household"      [(ngModel)]="Household" >Household<br>
+              <input type="checkbox" id="Etcetra"    name="Etcetra"    value="Etcetra"        [(ngModel)]="Etcetra" >Etcetra<br>
+            </div>
+            
+              <button *ngIf="isShown"  type="button" class="btn btn-primary" style="margin-right: 10px" id="addtaskbtn"   (click)="saveTodo()">Add Task</button>
+              <button *ngIf="!isShown" type="button" class="btn btn-primary" style="margin-right: 10px" id="savetaskbtn"  (click)="updateTask()">Save Task</button>
+              <button                  type="button" class="btn btn-info" style="margin-right: 10px"id="sorttaskbtn"   (click)="SortTask()">Sort</button>
+              <button                  type="button" class="btn btn-danger" style="margin-right: 10px" id="deleteallbtn" (click)="removeAll()">Delete All</button>
+
+          </div>
+
+          <br>
+
+          <div>
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searchtextbox" [(ngModel)]="searchTerm"/>
+          </div>
+
+          <br>
+          <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Index</th>
+                <th>Task Name</th>
+                <th>Due Date</th>
+                <th>Reminder Date</th>
+                <th>Category</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todos | todoFilter:searchTerm ;let i=index; ">
+                    <th>{{i+1}}</th>
+                    <td class="{{(todo.isCompleted)?'done':''}}">{{todo.name}}</td>
+                    <td>{{todo.Duedate}}</td>
+                    <td>{{todo.Reminderdate}}</td>
+                    <td>{{todo.categories}}</td>
+                    <td><input                           type="button"  value="Delete"   style="position: relative; margin-right: 10px"  class="btn btn-danger" (click)=remove(i)>
+                        <input *ngIf="!todo.isCompleted" type="button"  value="Complete" style="position: relative; margin-right: 10px"  class="btn btn-success" (click)="done(i)">
+                        <input *ngIf="!todo.isCompleted" type="button"  value="Edit"     style="position: relative;margin-right: 10px"   class="btn btn-primary" (click)="edit(i)">
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+ 

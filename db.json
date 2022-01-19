@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "signup": [
+    
+        {
+          "firstname": "Brij",
+          "lastname": "nandan",
+          "gender": "Male",
+          "mobile": "7018289620",
+          "address": "#1620 Street No.3",
+          "email": "brij@gmail.com",
+          "password1": "hello1234",
+          "password2": "hello1234",
+          "id": 1
+        },
+        {
+          "firstname": "Brij",
+          "lastname": "nandan",
+          "gender": "Male",
+          "mobile": "7018289620",
+          "address": "#1620 Street No.3",
+          "email": "briw@gmail.com",
+          "password1": "wewe",
+          "password2": "egwegwe",
+          "id": 2
+        }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

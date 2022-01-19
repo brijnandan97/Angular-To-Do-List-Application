@@ -1,0 +1,7 @@
+.done{text-decoration: line-through;}
+table tr td button {
+    background: no-repeat;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}

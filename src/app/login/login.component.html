@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1> Login </h1>
+                <hr>
+                <form #loginForm="ngForm" (ngSubmit)="LogIn(loginForm)">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                      <div  *ngIf="email.touched">
+                        <span  class="text-danger" *ngIf="email.errors?.['required']">Email is a required field</span>
+                        <span  class="text-danger" *ngIf="email.errors?.['pattern']">This is not a valid Email!!!</span>
+                      </div>
+                      </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" ngModel #password="ngModel" required>
+                      <span  class="text-danger" *ngIf="password.touched && !password.valid">Enter Password</span>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+                    
+                  </form>
+                  <a routerLink="/signup">New User? Click to Signup!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
