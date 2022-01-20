@@ -65,7 +65,7 @@ export class TodolistComponent implements OnInit {
       this.Assignment=false;
       this.Household=false;
       this.Etcetra=false;
-      console.log(this.userservice.users);
+      
     }
     else if(this.newTodo===undefined || this.newTodo==null || this.newTodo===''){
       alert('Please Enter To do');
@@ -93,15 +93,14 @@ export class TodolistComponent implements OnInit {
   remove(id:number){
     if(confirm("Are you sure you want to delete this item:")){ 
       this.todos.splice(id,1);
-      //this.todos=this.todos.filter((v,i)=>i!==id);
-      console.log(this.userservice.users);
+      
     }
   }
   removeAll(){
     if(this.todos.length>0){
       if(confirm("Are you sure you want to delete all the items:")){ 
         this.todos.length=0;
-        console.log(this.userservice.users);
+        
       }
     }
   }
@@ -110,7 +109,7 @@ export class TodolistComponent implements OnInit {
     this.userservice.getActiveUser().isLogged=false;
     this.router.navigate(['/login']);
     alert("You have successfully logged out!")
-    console.log(this.userservice.users);
+    
   }
 
   SortTask(){
@@ -143,7 +142,7 @@ export class TodolistComponent implements OnInit {
   }
 
   updateTask(){
-    console.log(this.newTodo);
+    
     if(this.newTodo && this.Duedate && this.Reminderdate && (new Date(this.Duedate)>=new Date(this.Reminderdate)) && 
     (this.Office || this.Assignment || this.Household || this.Etcetra  )){
       this.todos[this.updateId].name=this.newTodo;

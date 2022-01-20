@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
     this.userservice.getActiveUser().isLogged=false;
     this.router.navigate(['/login']);
     alert("You have successfully logged out!")
-    console.log(this.userservice.users);
+  
   }
 
 }

@@ -20,11 +20,11 @@ export class todoFilterPipe implements PipeTransform{
         //     );
         
 
-        return todos.filter(function(todo){
+        return todos.filter(todo=>{
             if(todo.name.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1){
-                return todo.name.toLowerCase().indexOf(searchTerm.toLowerCase())
+                return todo.name.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1;
             }
-            if(todo.categories.length==1){ 
+            else if(todo.categories.length==1){ 
                 return todo.categories[0].toLowerCase().indexOf(searchTerm.toLowerCase())!==-1;
             }
             else if(todo.categories.length==2){
