@@ -87,11 +87,11 @@
                     </div>
                     
                     <br>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="uploadImage">Upload Image</label>
-                        <input type="file" class="form-control" name="image"  (change)="selectFiles($event)" [ngModel]="users.uploadedImage" #image="ngModel" required>
+                        <input type="file" class="form-control" name="image"  (change)="selectFiles($event)" ngModel #image="ngModel" required>
                         
-                    </div> -->
+                    </div>
 
                     <br>
                         <button type="submit" class="btn btn-primary" style="margin-right: 10px" [disabled]="!Profileform.valid">Save</button>

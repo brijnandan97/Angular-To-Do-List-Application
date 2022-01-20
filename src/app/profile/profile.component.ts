@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
     if(event.target.files){
       this.reader=new FileReader();
       this.reader.readAsDataURL(event.target.files[0])
-      this.users.uploadedImage=this.reader.result;
+      
     }
   }
 
@@ -62,6 +62,7 @@ export class ProfileComponent implements OnInit {
       this.users.email=Profileform.value.email;
       this.users.password=Profileform.value.password1;
       this.users.confirmpassword=Profileform.value.password2;
+      this.users.uploadedImage=this.reader.result;
       alert("Profile Updated Successfully");
     }
     
