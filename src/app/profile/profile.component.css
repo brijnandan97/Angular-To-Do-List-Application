@@ -1,0 +1,17 @@
+.card{
+    border: 2px solid black;
+    width:550px;
+    padding:15px;
+    position: absolute;
+    top: 1%;
+    left:30%;
+}
+label {
+    float: left;
+}
+span {
+    float: left;
+}
+input.ng-invalid.ng-touched{
+    border:1px solid red;
+}

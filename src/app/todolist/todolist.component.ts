@@ -67,13 +67,13 @@ export class TodolistComponent implements OnInit {
       this.Etcetra=false;
       console.log(this.userservice.users);
     }
-    else if(this.newTodo===undefined){
+    else if(this.newTodo===undefined || this.newTodo==null || this.newTodo===''){
       alert('Please Enter To do');
     }
-    else if(this.Duedate===undefined){
+    else if(this.Duedate===undefined || this.Duedate===null){
       alert('Please enter Due Date');
     }
-    else if(this.Reminderdate===undefined){
+    else if(this.Reminderdate===undefined || this.Reminderdate===null){
       alert("Please enter Reminder Date");
     }
     else if(new Date(this.Duedate)<new Date(this.Reminderdate)){
@@ -123,18 +123,70 @@ export class TodolistComponent implements OnInit {
     this.newTodo=this.todos[id].name;
     this.Duedate=this.todos[id].Duedate;
     this.Reminderdate=this.todos[id].Reminderdate;
+    for(let val of this.todos[id].categories){
+      if(val==='Office'){
+        this.Office=true;
+      }
+      if(val==='Assignment'){
+        this.Assignment=true;
+      }
+      if(val==='Household'){
+        this.Household=true;
+      }
+      if(val==='Etcetra'){
+        this.Etcetra=true;
+      }
+    }
+
     this.updateId=id;
     this.isShown=false;
   }
 
   updateTask(){
-    this.todos[this.updateId].name=this.newTodo;
-    this.todos[this.updateId].Duedate=this.Duedate;
-    this.todos[this.updateId].Reminderdate=this.Reminderdate;
-    this.newTodo='';
-    this.Duedate=''
-    this.Reminderdate='';
-    this.isShown=true;
+    console.log(this.newTodo);
+    if(this.newTodo && this.Duedate && this.Reminderdate && (new Date(this.Duedate)>=new Date(this.Reminderdate)) && 
+    (this.Office || this.Assignment || this.Household || this.Etcetra  )){
+      this.todos[this.updateId].name=this.newTodo;
+      this.todos[this.updateId].Duedate=this.Duedate;
+      this.todos[this.updateId].Reminderdate=this.Reminderdate;
+      this.todos[this.updateId].categories=[];
+      if(this.Office){
+        this.todos[this.updateId].categories.push("Office");
+      }
+      if(this.Assignment){
+        this.todos[this.updateId].categories.push("Assignment");
+      }
+      if(this.Household){
+        this.todos[this.updateId].categories.push("Household");
+      }
+      if(this.Etcetra){
+        this.todos[this.updateId].categories.push("Etcetra");
+      }
+      this.newTodo='';
+      this.Duedate=''
+      this.Reminderdate='';
+      this.Office=false;
+      this.Assignment=false;
+      this.Household=false;
+      this.Etcetra=false;
+      this.isShown=true;
+      
+    }
+    else if(this.newTodo===undefined || this.newTodo===null || this.newTodo===''){
+      alert('Please Enter To do');
+    }
+    else if(this.Duedate===undefined || this.Duedate===null){
+      alert('Please enter Due Date');
+    }
+    else if(this.Reminderdate===undefined || this.Reminderdate===null){
+      alert("Please enter Reminder Date");
+    }
+    else if(new Date(this.Duedate)<new Date(this.Reminderdate)){
+      alert("Reminder Date should be less than Due Date");
+    }
+    else if(!this.Office && !this.Assignment && !this.Household && !this.Etcetra){
+      alert("Please select any category");
+    }
   }
   
   ViewProfile(){
