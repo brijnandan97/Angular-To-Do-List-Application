@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
     if(Profileform.value.password1!=Profileform.value.password2){
       alert("Password and confirm Password should match!")
     }
-    else if(this.userservice.users.filter(user => user.email==Profileform.value.email)[0] && Profileform.value.email!=this.users.email){
+    else if(this.userservice.users.filter(user => user.email===Profileform.value.email)[0] && Profileform.value.email!=this.users.email){
       alert("Email already registered");
     }
     else{

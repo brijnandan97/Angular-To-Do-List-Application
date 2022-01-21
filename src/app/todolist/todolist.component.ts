@@ -67,7 +67,7 @@ export class TodolistComponent implements OnInit {
       this.Etcetra=false;
       
     }
-    else if(this.newTodo===undefined || this.newTodo==null || this.newTodo===''){
+    else if(this.newTodo===undefined || this.newTodo===null || this.newTodo===''){
       alert('Please Enter To do');
     }
     else if(this.Duedate===undefined || this.Duedate===null){
@@ -93,6 +93,14 @@ export class TodolistComponent implements OnInit {
   remove(id:number){
     if(confirm("Are you sure you want to delete this item:")){ 
       this.todos.splice(id,1);
+      this.isShown=true;
+      this.newTodo='';
+      this.Duedate='';
+      this.Reminderdate='';
+      this.Office=false;
+      this.Assignment=false;
+      this.Household=false;
+      this.Etcetra=false;
       
     }
   }
@@ -100,7 +108,15 @@ export class TodolistComponent implements OnInit {
     if(this.todos.length>0){
       if(confirm("Are you sure you want to delete all the items:")){ 
         this.todos.length=0;
-        
+        this.isShown=true;
+        this.newTodo='';
+        this.Duedate='';
+        this.Reminderdate='';
+        this.Office=false;
+        this.Assignment=false;
+        this.Household=false;
+        this.Etcetra=false;
+
       }
     }
   }
@@ -119,6 +135,15 @@ export class TodolistComponent implements OnInit {
   }
 
   edit(id:number){
+    this.newTodo='';
+    this.Duedate='';
+    this.Reminderdate='';
+    this.Office=false;
+    this.Assignment=false;
+    this.Household=false;
+    this.Etcetra=false;
+
+    
     this.newTodo=this.todos[id].name;
     this.Duedate=this.todos[id].Duedate;
     this.Reminderdate=this.todos[id].Reminderdate;
@@ -169,6 +194,7 @@ export class TodolistComponent implements OnInit {
       this.Household=false;
       this.Etcetra=false;
       this.isShown=true;
+
       
     }
     else if(this.newTodo===undefined || this.newTodo===null || this.newTodo===''){
@@ -191,6 +217,5 @@ export class TodolistComponent implements OnInit {
   ViewProfile(){
     this.router.navigate(['/profile']);
   }
-
 
 }

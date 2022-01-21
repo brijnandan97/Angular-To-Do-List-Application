@@ -19,14 +19,14 @@ export class LoginComponent implements OnInit {
   }
   
   LogIn(loginForm:NgForm){
-    let user=this.userservice.users.filter(user => user.email==loginForm.value.email && user.password==loginForm.value.password)[0]
+    let user=this.userservice.users.filter(user => user.email===loginForm.value.email && user.password===loginForm.value.password)[0]
     
     if(user){
       alert("You are logged in");
       this.userservice.activeUser(user.id-1);
       this.router.navigate(['/todolist']);
     }
-    else if(this.userservice.users.filter(user => user.email==loginForm.value.email && user.password!=loginForm.value.password)[0]){
+    else if(this.userservice.users.filter(user => user.email===loginForm.value.email && user.password!=loginForm.value.password)[0]){
       alert("Enter correct Password!")
     }
     else{

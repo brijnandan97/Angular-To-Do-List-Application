@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(signupform:NgForm){
-    if(this.userservice.users.filter(user => user.email==signupform.value.email)[0]){
+    if(this.userservice.users.filter(user => user.email===signupform.value.email)[0]){
       alert("Email already registered");
     }
     else if(signupform.value.password1!=signupform.value.password2){

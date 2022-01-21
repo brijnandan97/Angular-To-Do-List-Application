@@ -20,7 +20,7 @@ export class todoFilterPipe implements PipeTransform{
         //     );
         
 
-        return todos.filter(todo=>{
+        return todos.filter(function(todo){
             if(todo.name.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1){
                 return todo.name.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1;
             }
@@ -43,6 +43,8 @@ export class todoFilterPipe implements PipeTransform{
                 ||todo.categories[3].toLowerCase().indexOf(searchTerm.toLowerCase())!==-1;
             }
             return -1;
+            
+            
         });
 
     }
